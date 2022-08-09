@@ -1,6 +1,6 @@
 ﻿namespace AzureWebAPI.Models
 {
-    public class User
+    public class UserModel
     {
         public string Name { get; set; }
         public string Email { get; set; }

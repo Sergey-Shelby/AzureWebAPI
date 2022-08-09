@@ -10,9 +10,9 @@ namespace AzureWebAPI.Controllers
     public class UserController : ControllerBase
     {
         [HttpGet]
-        public User Get()
+        public UserModel Get()
         {
-            var user = new User()
+            var user = new UserModel()
             {
                 Name = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "name")?.Value,
                 Email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "preferred_username")?.Value
