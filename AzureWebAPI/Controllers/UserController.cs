@@ -15,7 +15,7 @@ namespace AzureWebAPI.Controllers
             var user = new UserModel()
             {
                 Name = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "name")?.Value,
-                Email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "preferred_username")?.Value
+                Email = HttpContext.User.Claims.FirstOrDefault(x => x.Type.Contains("emailaddress"))?.Value
             };
 
             return user;
