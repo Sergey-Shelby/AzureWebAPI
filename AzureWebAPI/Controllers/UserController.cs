@@ -1,7 +1,6 @@
 ﻿using AzureWebAPI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using System.Security.Claims;
 
 namespace AzureWebAPI.Controllers
 {
@@ -14,8 +13,8 @@ namespace AzureWebAPI.Controllers
         {
             var user = new UserModel()
             {
-                Name = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "name")?.Value,
-                Email = HttpContext.User.Claims.FirstOrDefault(x => x.Type.Contains("emailaddress"))?.Value
+                Name = HttpContext.User.FindFirst(ClaimTypes.Name)?.Value,
+                Email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value
             };
 
             return user;
